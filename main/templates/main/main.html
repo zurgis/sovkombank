@@ -1,0 +1,70 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <!-- {% for field in application_filter.form %}
+    {{ field }}
+  {% endfor %}
+
+  {{ application_filter.form }} -->
+
+  <div class="mb-3">
+    <form action="" method="GET">
+      {% for field in filter.form %}
+        {{ field.name }}
+        {{ field }}
+      {% endfor %}
+
+      <div class="form-group">
+        <button class="btn btn-light">Поиск</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- <form method="GET">
+    
+    {% for field in filter.form %}
+      {{ field }}
+    {% endfor %}
+    <button>search</button>
+  </form> -->
+
+  <!-- {% if form.filter %}
+    {% for field in filter.form %}
+      {{ field }}
+    {% endfor %}
+  {% endif %}
+  
+  {% for field in filter.form %}
+    {{ field }}
+  {% endfor %} -->
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Дата заявки</th>
+        <th scope="col">Продукт</th>
+        <th scope="col">Телефон клиента</th>
+        <th scope="col">Решение</th>
+        <th scope="col">Комментарий</th>
+        <th scope="col">Изменение</th>
+        <th scope="col">Удаление</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for application in object_list %}
+        <tr>
+          <td>{{ application.date|date:'M d, Y H:i' }}</td>
+          <td>{{ application.get_product_display }}</td>
+          <td>{{ application.phone }}</td>
+          <td>{{ application.get_solution_display }}</td>
+          <td>{{ application.comment }}</td>
+          <td><a href="{% url 'main:update' application.pk %}">Изменить запись</a></td>
+          <td><a href="{% url 'main:delete' application.pk %}">Удалить запись</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
