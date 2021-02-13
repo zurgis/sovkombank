@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<label>Последняя заявка по клиенту</label>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Дата заявки</th>
+        <th scope="col">Продукт</th>
+        <th scope="col">Телефон клиента</th>
+        <th scope="col">Решение</th>
+        <th scope="col">Комментарий</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in row %}
+        <tr>
+          <td>{{ i.date|date:'M d, Y H:i' }}</td>
+          <td>{{ i.product }}</td>
+          <td>{{ i.phone }}</td>
+          <td>{{ i.solution }}</td>
+          <td>{{ i.comment }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

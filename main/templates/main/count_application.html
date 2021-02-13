@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <label>Количество заявок в каждом месяце</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Месяц</th>
+        <th scope="col">Количество заявок</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in row %}
+        <tr>
+          <td>{{ i.month }}</td>
+          <td>{{ i.count }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

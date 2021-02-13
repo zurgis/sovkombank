@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <label>Клиенты, по которым были заведены заявки на другой продукт после одобрения</label>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Телефон</th>
+        <th scope="col">Продукт</th>
+        <th scope="col">Решение</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in row %}
+        <tr>
+          <td>{{ i.phone }}</td>
+          <td>{{ i.product }}</td>
+          <td>{{ i.solution }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

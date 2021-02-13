@@ -2,17 +2,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-  <!-- {% for field in application_filter.form %}
-    {{ field }}
-  {% endfor %}
-
-  {{ application_filter.form }} -->
-
   <div class="mb-3">
     <form action="" method="GET">
       {% for field in filter.form %}
-        {{ field.name }}
+        {{ field.label }}
         {{ field }}
       {% endfor %}
 
@@ -21,26 +14,8 @@
       </div>
     </form>
   </div>
-
-  <!-- <form method="GET">
-    
-    {% for field in filter.form %}
-      {{ field }}
-    {% endfor %}
-    <button>search</button>
-  </form> -->
-
-  <!-- {% if form.filter %}
-    {% for field in filter.form %}
-      {{ field }}
-    {% endfor %}
-  {% endif %}
   
-  {% for field in filter.form %}
-    {{ field }}
-  {% endfor %} -->
-  
-  <table class="table">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th scope="col">Дата заявки</th>
@@ -67,4 +42,18 @@
     </tbody>
   </table>
 
+  <div class="mb-3">
+    <form action="" method="GET">
+      <select name='order' class="form-select" aria-label="Default select example">
+        <option hidden>Сортировать:</option>
+        <option value="product" {{ by_product }}>По продукту</option>
+        <option value="-date" {{ by_date }}>По самой новой записи</option>
+        <option value="solution" {{ by_solution }}>По решению</option>
+      </select>
+
+      <div class="form-group">
+        <button class="btn btn-light">Принять</button>
+      </div>
+    </form>
+  </div>
 {% endblock content %}
